@@ -131,7 +131,7 @@ namespace Nancy_Repo_Project
                 }
                 catch
                 {
-                    Console.WriteLine("Value of K is:       " + k);
+                    Console.WriteLine("No element");
 
                 }
 
