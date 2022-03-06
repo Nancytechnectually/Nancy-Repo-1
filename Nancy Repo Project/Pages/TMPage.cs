@@ -147,7 +147,7 @@ namespace Nancy_Repo_Project
             priceTag.Click();
             priceTextbox.Clear();
             priceTag.Click();
-            priceTextbox.SendKeys("12");
+            priceTextbox.SendKeys("120");
 
             IWebElement save = driver.FindElement(By.Id("SaveButton"));
             save.Click();
@@ -185,9 +185,7 @@ namespace Nancy_Repo_Project
             Assert.That(createdCode.Text == "Edited abcdef", "Code record hasn't been edited.");
             Assert.That(createdTypeCode.Text == "M", "TypeCode record hasn't been edited.");
             Assert.That(createdDescription.Text == "Edited qwerty", "Description record hasn't been edited.");
-            Assert.That(createdPrice.Text == "$12.00", "Price record hasn't been edited.");
-
-
+            Assert.That(createdPrice.Text == "$120.00", "Price record hasn't been edited.");
 
 
 
