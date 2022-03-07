@@ -9,10 +9,11 @@ using OpenQA.Selenium.Chrome;
 namespace Nancy_Repo_Project
 {
     [TestFixture]
+    [Parallelizable]
     internal class TMTestclass : CommonDriver 
     {
      
-        [OneTimeSetUp]
+        [SetUp]
         public void LoginFunation()
         {
             // open chrome browser
@@ -36,21 +37,19 @@ namespace Nancy_Repo_Project
             //HomePage object initialization and definition
 
             TMPage TMPageobj = new TMPage();
-            TMPageobj.CreateNew(driver);
+            TMPageobj.CreateTM(driver);
 
         }
 
         [Test, Order(2)]
         public void TC_2EditTM_Test()
         {
-            //TMPage object initialization and definition
+                 
 
-            TMPage TMPageobj1 = new TMPage();
-            TMPageobj1.CountTM(driver);
 
-            //HomePage object initialization and definition
+            //Editcommand  object initialization and definition
             TMPage TMPageobj2 = new TMPage();
-            TMPageobj2.editTM(driver);
+            TMPageobj2.EditTM(driver);
 
 
         }
@@ -60,18 +59,16 @@ namespace Nancy_Repo_Project
         public void TC_3DeleteTM_Test()
         {
 
-            TMPage TMPageobj1 = new TMPage();
-            TMPageobj1.CountTM(driver);
 
-            //HomePage object initialization and definition
+            //Celete object initialization and definition
             TMPage TMPageobj3 = new TMPage();
-            TMPageobj3.deleteTM(driver);
+            TMPageobj3.DeleteTM(driver);
 
 
 
         }           
 
-        [OneTimeTearDown]
+        [TearDown]
         public void LogoutTM_Test()
         {
             //logout the chrome window 

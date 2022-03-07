@@ -24,5 +24,17 @@ namespace Nancy_Repo_Project.Pages
 
         }
 
+        internal void GoToEmployeePage(IWebDriver driver)
+        {
+            // Go to TM page
+            IWebElement administrationDropdown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
+            administrationDropdown.Click();
+            Wait.ClickableElement(driver, "XPath", "/html/body/div[3]/div/div/ul/li[5]/ul/li[2]/a", 2);
+
+            IWebElement eOption = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[2]/a"));
+            eOption.Click();
+
+
+        }
     }
 }
