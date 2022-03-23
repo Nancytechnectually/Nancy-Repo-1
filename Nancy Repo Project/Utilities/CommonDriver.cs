@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace Nancy_Repo_Project.Utilities
 {
-    internal class CommonDriver
+    public class CommonDriver
     {
         public static IWebDriver driver;
 

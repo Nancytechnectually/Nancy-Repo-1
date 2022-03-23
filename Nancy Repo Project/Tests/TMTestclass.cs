@@ -49,7 +49,7 @@ namespace Nancy_Repo_Project
 
             //Editcommand  object initialization and definition
             TMPage TMPageobj2 = new TMPage();
-            TMPageobj2.EditTM(driver);
+            TMPageobj2.EditTM(driver, "Dummy1", "Dummy2", "Dummy3");
 
 
         }

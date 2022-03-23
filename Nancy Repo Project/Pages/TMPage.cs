@@ -51,18 +51,7 @@ namespace Nancy_Repo_Project
             goToLastPageButton.Click();
             Thread.Sleep(2000);
 
-            // Check if record create is present in the table and has expected value
-            IWebElement actualCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            IWebElement actualTypeCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
-            IWebElement actualDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
-            IWebElement actualPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
-
-            // Option1
-            Assert.That(actualCode.Text == "February2022", "Actual code and expected code do not match");
-            Assert.That(actualTypeCode.Text == "M", "Actual type code and expected type code do not match");
-            Assert.That(actualDescription.Text == "February2022", "Actual description and expected description do not match");
-            Assert.That(actualPrice.Text == "$12.00", "Actual price and expected price do not match");
-
+           
             //// Option2
             //if (actualCode.Text == "February2022")
             //{
@@ -75,7 +64,7 @@ namespace Nancy_Repo_Project
         }
 
     
-        public void EditTM(IWebDriver driver)
+        public void EditTM(IWebDriver driver , String Description, string Code, String Price)
         {
             // Wait until the entire TM page is displayed
             Wait.ElementVisible(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]", 2);
@@ -100,16 +89,18 @@ namespace Nancy_Repo_Project
             // Edit code
             IWebElement codeTextbox = driver.FindElement(By.Id("Code"));
             codeTextbox.Clear();
-            codeTextbox.SendKeys("EditedFebruary2022");
+            codeTextbox.SendKeys(Code);
 
             // Edit description
             IWebElement descriptionTextbox = driver.FindElement(By.Id("Description"));
             descriptionTextbox.Clear();
-            descriptionTextbox.SendKeys("EditedFebruary2022");
+            descriptionTextbox.SendKeys(Description);
+
+
 
             // Edit price
             IWebElement priceTag = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
-            IWebElement priceTextbox = driver.FindElement(By.Id("Price"));
+            IWebElement priceTextbox = driver.FindElement(By.Id(Price));
 
             priceTag.Click();
             priceTextbox.Clear();
@@ -137,6 +128,14 @@ namespace Nancy_Repo_Project
             Assert.That(createdDescription.Text == "EditedFebruary2022", "Description record hasn't been edited.");
             Assert.That(createdPrice.Text == "$170.00", "Price record hasn't been edited.");
         }
+
+        public string NewEditedDescription(IWebDriver driver)
+        {
+            IWebElement createdDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
+            return createdDescription.Text;
+
+        }
+
 
         public void DeleteTM(IWebDriver driver)
         {
@@ -180,6 +179,83 @@ namespace Nancy_Repo_Project
             Assert.That(editedDescription.Text != "EditedFebruary2022", "Description record hasn't been deleted.");
             Assert.That(editedPrice.Text != "$170.00", "Price record hasn't been deleted.");
         }
+
+
+        // Check if record create is present in the table and has expected value
+       
+        
+        
+        
+         public string GetCode(IWebDriver driver)
+         
+        {
+            IWebElement actualCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+
+            return actualCode.Text;
+
+        }
+
+        public string GetTypeCode(IWebDriver driver)
+
+        {
+
+            IWebElement actualTypeCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[2]"));
+            return actualTypeCode.Text;
+
+        }
+
+
+        public string GetDescription(IWebDriver driver)
+
+        {
+
+            IWebElement actualDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
+            return actualDescription.Text;
+
+        }
+
+
+
+        public string GetPrice(IWebDriver driver)
+
+        {
+            IWebElement actualPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
+
+            return actualPrice.Text;
+
+        }
+
+        public string GetEditedCode(IWebDriver driver)
+
+        {
+
+            IWebElement createdCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return createdCode.Text;
+
+        }
+
+        public string GetEditedPrice(IWebDriver driver)
+
+        {
+
+            IWebElement createdPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
+            return createdPrice.Text;
+
+        }
+
+        public string GeteditedDescription(IWebDriver driver)
+
+        {
+
+            IWebElement createdDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
+            return createdDescription.Text;
+
+        }
+       
+
+
+
+
 
 
     }

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Nancy_Repo_Project.Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace Nancy_Repo_Project.Pages
 {
@@ -14,7 +15,14 @@ namespace Nancy_Repo_Project.Pages
 
         public void LoginSteps (IWebDriver driver)
         {
+
+            driver = new ChromeDriver();
+
+            driver.Manage().Window.Maximize();
+
+
             // enter credentials and login
+
 
             driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login?ReturnUrl=%2f");
 
