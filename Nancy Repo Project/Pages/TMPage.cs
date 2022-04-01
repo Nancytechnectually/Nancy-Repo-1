@@ -14,11 +14,11 @@ namespace Nancy_Repo_Project
     {
         public void CreateTM(IWebDriver driver)
         {
-            // Click on create new button
+            // Click on  the create new button
             IWebElement createNewButton = driver.FindElement(By.XPath("//*[@id='container']/p/a"));
             createNewButton.Click();
 
-            // Select material from TypeCode dropdown
+            // Select material from  the TypeCode dropdown
             IWebElement typeCodeDropdown = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[2]/span"));
             typeCodeDropdown.Click();
             Wait.ClickableElement(driver, "XPath", "//*[@id='TypeCode_listbox']/li[1]", 2);
